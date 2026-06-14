@@ -1,3 +1,23 @@
+#WP
+##Files needed
+human_models/human_models_files
+data/images
+data/train/worldpose_train.npz
+data/train/worldpose_test.npz
+pretrained_models/vitpose-h.pth
+pretrained_models/yolo8x.pt
+pretrained_models/smplest_x-h/smplest_x_h.pth.tar
+
+##run 
+```bash
+bash scripts/train.sh worldpose_ft 1 config_worldpose_ft.py
+```
+run TAM
+```bash
+bash scripts/train.sh worldpose_ft 1 config_finetune_worldpose_tempral_2.py
+```
+
+
 # SMPLest-X: Ultimate Scaling for Expressive Human Pose and Shape Estimation
 
 This work is the extended version of [SMPLer-X](https://arxiv.org/abs/2309.17448). This new codebase is designed for easy installation and flexible development, enabling seamless integration of new methods with the pretrained SMPLest-X model.

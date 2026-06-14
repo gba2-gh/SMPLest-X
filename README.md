@@ -1,5 +1,5 @@
-#WP
-##Files needed
+# WP
+## Files needed
 human_models/human_models_files
 data/images
 data/train/worldpose_train.npz
@@ -8,7 +8,7 @@ pretrained_models/vitpose-h.pth
 pretrained_models/yolo8x.pt
 pretrained_models/smplest_x-h/smplest_x_h.pth.tar
 
-##run 
+## run 
 ```bash
 bash scripts/train.sh worldpose_ft 1 config_worldpose_ft.py
 ```

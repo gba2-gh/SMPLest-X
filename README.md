@@ -1,12 +1,12 @@
 # WP
 ## Files needed
-human_models/human_models_files
-data/images
-data/train/worldpose_train.npz
-data/train/worldpose_test.npz
-pretrained_models/vitpose-h.pth
-pretrained_models/yolo8x.pt
-pretrained_models/smplest_x-h/smplest_x_h.pth.tar
+- human_models/human_models_files
+- data/images
+- data/train/worldpose_train.npz
+- data/train/worldpose_test.npz
+- pretrained_models/vitpose-h.pth
+- pretrained_models/yolo8x.pt
+- pretrained_models/smplest_x-h/smplest_x_h.pth.tar
 
 ## run 
 ```bash

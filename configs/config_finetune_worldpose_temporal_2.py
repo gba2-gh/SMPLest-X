@@ -18,9 +18,9 @@ config = {
   "train": {
     "num_gpus": 1,
     "continue_train": True,
-    "start_over": True,          # only the TAM trains -> fresh optimizer / epoch counter
+    "start_over": False,          # only the TAM trains -> fresh optimizer / epoch counter
     "end_epoch": 30,
-    "train_batch_size": 4,       # encoder runs B*T forwards (under no_grad); lower if OOM
+    "train_batch_size": 16,       # encoder runs B*T forwards (under no_grad); lower if OOM
     "num_thread": 1,
     "lr": 1e-4,                  # adapter trains from scratch -> higher than decoder finetune
     "min_lr": 1e-6,
@@ -30,10 +30,10 @@ config = {
     "print_iters": 100,
     # Loss scope: body pose + root orient + shape + body 2D/3D joints. Hand/face off.
     "smplx_kps_3d_weight":   10.0,
-    "smplx_kps_2d_weight":    5.0,
+    "smplx_kps_2d_weight":    3.0,
     "smplx_pose_weight":     5.0,
     "smplx_shape_weight":     1.0,   # ON (WorldPose stores betas as smplx -> shape valid)
-    "smplx_orient_weight":    1.0,
+    "smplx_orient_weight":    5.0,
     "hand_root_weight":       0.0,
     "hand_consist_weight":    0.0,
     # "hand_loss":              False,
@@ -60,12 +60,12 @@ config = {
 
   "model": {
     "model_type": "vit_huge",
-    "pretrained_model_path": "./pretrained_models/smplest_x_h/smplest_x_h.pth.tar",
+    "pretrained_model_path": "./outputs/train_worldpose_ft_20260617_100855/model_dump/snapshot_4.pth.tar",
     "human_model_path": "./human_models/human_model_files",
     "encoder_pretrained_model_path": "./pretrained_models/vitpose-h.pth",
     "use_temporal": True,
     "temporal": {
-      "num_frames":     3,
+      "num_frames":     1,
       "temporal_stride": 3,
       "bottleneck_dim": 256,
       "num_heads":      4,

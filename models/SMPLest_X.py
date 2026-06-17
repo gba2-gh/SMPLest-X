@@ -192,14 +192,15 @@ class Model(nn.Module):
         return batch_hand_global_rotmat
 
     def forward(self, inputs, targets, meta_info, mode):
-        if self.use_temporal:
+        if self.use_temporal and inputs['img'].dim() == 5:
             img_feat_all, task_tokens_all = self.encode_temporal(inputs['img'])
             img_feat, task_tokens = self.temporal_adapter(
                 img_feat_all, task_tokens_all, meta_info['temporal_valid'])
             pred_mano_params = self.decoder(task_tokens, img_feat)
         else:
             body_img = F.interpolate(inputs['img'], self.cfg.model.input_body_shape)
-            img_feat, task_tokens = self.encoder(body_img)  # task_token:[bs, N, c]
+            with torch.no_grad():
+                img_feat, task_tokens = self.encoder(body_img)  # task_token:[bs, N, c]
             pred_mano_params = self.decoder(task_tokens, img_feat)
 
         # get transl

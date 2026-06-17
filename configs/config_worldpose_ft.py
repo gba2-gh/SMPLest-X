@@ -17,7 +17,7 @@ config = {
   "train": {
     "num_gpus": 1,
     "continue_train":True,     # load pretrained checkpoint
-    "start_over": True,         # reset optimizer moments (pretrained moments mislead at new LR)
+    "start_over": False,         # reset optimizer moments (pretrained moments mislead at new LR)
     "end_epoch": 30,
     "train_batch_size": 16,
     "num_thread": 4,
@@ -55,15 +55,14 @@ config = {
   },
 
   "test": {
-    "test_batch_size": 1,
+    "test_batch_size": 32,
   },
 
   "model": {
     "model_type": "vit_huge",
     # Path to the pretrained SMPLest-X checkpoint to fine-tune from
-    "pretrained_model_path":  "./pretrained_models/smplest_x_h/smplest_x_h.pth.tar",
-    #"pretrained_model_path":  "./outputs/train_worldpose_ft_20260603_003131/model_dump/snapshot_2.pth.tar",
-    #"pretrained_model_path":  "./outputs/saved_logs/train_worldpose_ft_20260606_171757/model_dump/snapshot_13.pth.tar",
+    "pretrained_model_path":  "./pretrained_models/snapshot_11/snapshot_11.pth.tar",
+    #"pretrained_model_path":  "./outputs/train_worldpose_ft_20260614_215831/model_dump/snapshot_4.pth.tar",
     "human_model_path": "./human_models/human_model_files",
     "encoder_pretrained_model_path": "./pretrained_models/vitpose-h.pth",
     "encoder_config": {
